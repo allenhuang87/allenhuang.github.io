@@ -1,13 +1,13 @@
 var hasPushstate = !!(window.history && history.pushState);
 // duoshuo load function
-var duoshuoName = 'yuche'; // change to your DUOSHUO name
-var duoshuoQuery = {short_name: duoshuoName}; // change to your duoshuo name
+var duoshuoName = 'htsat'; // change to your DUOSHUO name
+var duoshuoQuery = {short_name: "htsat"}; // change to your duoshuo name
 function toggleDuoshuoComments(container) {
     var el = document.createElement('div');
     el.setAttribute('data-thread-key', postTitle);
     el.setAttribute('data-url', postHref);
     el.setAttribute('data-title', postTitle);
-    el.setAttribute('data-author-key', duoshuoName); // change to your duoshuo name
+    el.setAttribute('data-author-key', "htsat"); // change to your duoshuo name
     DUOSHUO.EmbedThread(el);
     jQuery(container).append(el);
 }
@@ -387,6 +387,7 @@ $(document).on({
         $('#navbar-toc').hide();
         $('.nexus').css('width', 'auto');
         $('#navbar-title a').hide();
+        generateMetroBanner();
     },
     'pjax:popstate': function () {
         setTimeout("$('#toc').find('li').remove();",100);
@@ -395,7 +396,14 @@ $(document).on({
     },
 });
 
+function generateMetroBanner(){
+    $("#metro-banner").AddMetroDoubleButton('metro-lava', 'metro-green', '', 'HTSAT-LAVA', "location.href=\'http://htsat.vicp.cc:800\'");
+    $("#metro-banner").AddMetroDoubleButton('metro-gitserver', 'metro-pink', '', 'HTSAT-SERVER', "location.href=\'http://htsat.vicp.cc:801\'");
+    $("#metro-banner").AddMetroSimpleButton('metro-D01', 'metro-pink', '', 'D01', "location.href=\'/tags/D01\'");
+    $("#metro-banner").AddMetroSimpleButton('metro-D01', 'metro-blue', '', 'D02', "location.href=\'/tags/D02\'");
+}
 
-
-
+$(document).ready(function () {
+    generateMetroBanner();
+});
 
